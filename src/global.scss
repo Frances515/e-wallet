@@ -1,0 +1,142 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import 'remixicon/fonts/remixicon.css';
+
+/*  Maison font */
+@font-face {
+  font-family: 'MaisonNeue Bold';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-Bold.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue BoldItalic';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-BoldItalic.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue Book';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-Book.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue BookItalic';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-BookItalic.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue Demi';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-Demi.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue DemiItalic';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-DemiItalic.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue Light';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-Light.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue LightItalic';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-LightItalic.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue Medium';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-Medium.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue MediumItalic';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-MediumItalic.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue Mono';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-Mono.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'MaisonNeue MonoItalic';
+  src: url("./assets/fonts/Maison Neue/MaisonNeue-MonoItalic.woff")format("woff");
+}
+
+@font-face {
+  font-family: 'Pacifico Regular';
+  src: url("./assets/fonts/Pacifico-Regular/Pacifico-Regular.ttf");
+}
+
+.action-sheet-cards{
+  --button-color:#FFFFFF;
+  --background:rgba(52, 59, 80, 0.80) !important;
+  backdrop-filter: blur(1.5px);
+  font-family: MaisonNeue Light;
+  font-size: 12px;
+}
+
+.action-sheet-cards .action-sheet-title{
+  // --color: #fb8b24;
+  --color: rgba(251, 139, 36, 0.4);
+  font-size: 12px;
+  text-transform: uppercase;
+  font-family: MaisonNeue Mono;
+  font-weight:bolder;
+  background:rgba(1, 9, 26, 0.1) !important;
+
+}
+
+.action-sheet-cards .action-sheet-cancel{
+  color: #FFFFFF !important;
+}
+
+.ios body{
+  --ion-color-step-150: rgb(255, 65, 103) !important;
+  // --ion-color-step-150: linear-gradient(to right, rgba(255, 65, 103, 0.82), rgba(255, 65, 103, 0))!important;
+}
+
+.action-sheet-cards .action-sheet-button{
+  font-family: MaisonNeue Light;
+  font-size: 17px;
+}
+
+.alert_popup{
+  --background:rgba(52, 59, 80, 0.80) !important;
+  backdrop-filter: blur(1.5px)  !important;
+
+}
+
+.remove{
+  background-color: rgb(255, 65, 103) !important;
+}
+
+.delete{
+  color: rgb(255, 65, 103) !important;
+}
+

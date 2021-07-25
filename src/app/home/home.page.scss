@@ -1,0 +1,181 @@
+
+#background{
+  background-color: #0F1524;
+  width: 100%;
+  height: 100%;
+}
+
+#container{
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+}
+
+#header p{
+  font-family: MaisonNeue Book;
+  font-size: 18px;
+  text-align: center;
+  opacity: 0.58;
+}
+
+ion-segment-button {
+  --background-checked: #343B50 !important;
+  // --color-checked: ;
+  --indicator-color: transparent;
+  padding: 6px;
+}
+
+ion-card{
+  height: 200px;
+}
+
+#cards_container{
+  background-image: url(../../assets/backgrounds/scribble_small@2x.png);
+  width: 100vw;
+  height: 250px;
+  background-size: contain !important;
+	-webkit-background-size: contain !important;
+  background-repeat: no-repeat;
+  margin-top: 20px;
+
+}
+
+#cards{
+  background: rgba(15, 21, 36, 0.3);
+  height: 190px;
+  width: 350px;
+  backdrop-filter: blur(3px);
+  margin: 0;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+
+}
+
+ion-card{
+  width: 350px;
+  --background:linear-gradient(to bottom right, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.07))!important;
+  margin: 0 auto;
+}
+
+ion-card-content{
+  filter:blur(0) !important;
+}
+
+#cards ion-card-subtitle{
+  font-family: MaisonNeue Bold !important;
+  font-size: 20px !important;
+  color: #ffffff !important;
+  text-transform: none;
+}
+
+#cards ion-card-header{
+  padding-bottom: none !important;
+}
+
+#cards img{
+  width: 50px;
+  height: 16px;
+}
+
+#cards #masked_number{
+  font-size: 20px;
+  color: #ffffff;
+}
+
+#masked_number .title{
+  font-size: 12px;
+  font-family: MaisonNeue Mono;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#masked_number .title span{
+  font-size: 15px;
+  font-family: MaisonNeue Light;
+  color: rgba(255, 255, 255, 1);
+}
+
+#card_dets{
+  padding-bottom: 15px;
+}
+
+ion-item{
+  --ion-item-background:#151C2E !important;
+  --ion-border-color: none !important;
+  --border-radius: 6px;
+  padding-top: 20px;
+  --padding-start: 0px !important;
+}
+
+ion-list{
+  --ion-item-background: none !important;
+  --ion-border-color: none !important;
+
+}
+
+#trans_details{
+  height: 25vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.icon_credit i{
+  color: #5DD267 !important;
+  font-size: 30px;
+}
+
+.icon_debit i{
+  color: #FF4167 !important;
+  font-size: 30px;
+}
+
+.title{
+  font-family: MaisonNeue Demi;
+  font-size: 14px;
+  padding-top: 8px;
+  padding-left: 5px;
+}
+
+.description{
+  font-family: MaisonNeue Light;
+  font-size: 12px;
+  padding-left: 32px;
+}
+
+.divider{
+  border-top: 0.5px solid #343B50;
+  margin-top: 10px;
+  margin-left: 32px;
+}
+
+.date{
+  font-family: MaisonNeue Light;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.32);
+  padding-left: 32px;
+}
+
+.expand{
+  font-family: MaisonNeue Medium;
+  font-size: 12px;
+  color: #CEF9F2;
+}
+
+#footer{
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 24px;
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.active i{
+  color: #fb8b24;
+}

@@ -1,0 +1,105 @@
+ion-content{
+  --ion-background-color:#0F1524;
+}
+
+#container{
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+}
+
+#header #title{
+  font-family: MaisonNeue Book;
+  font-size: 18px;
+  opacity: 0.58;
+  text-align: center;
+}
+
+#page-titlebar{
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+#page-titlebar #title{
+  font-family: MaisonNeue Light;
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+// ion-item .title{
+//   --ion-border-color: none !important;
+//   --border-radius: 6px;
+//   --padding-start: 0px !important;
+//   --inner-padding-top: 5px !important;
+//   --inner-padding-bottom: 5px !important;
+// }
+
+ion-item{
+  --padding-end: 20px !important;
+  --border-color: #343B50;
+}
+
+.list{
+  background-color:#151C2E !important;
+  border-radius: 6px;
+}
+
+ion-list{
+  --ion-item-background: none !important;
+  --ion-border-color: none !important;
+  --inner-padding-top: 5px !important;
+  --inner-padding-bottom: 10px !important;
+  --padding-start: 0px !important;
+
+}
+
+ion-item-divider{
+  --padding-start: 0px !important;
+  --background: none !important;
+  padding-left: 0px !important;
+}
+
+.title ion-label{
+  font-family: MaisonNeue Bold;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.list ion-label{
+  font-family: MaisonNeue Light;
+  font-size: 14px;
+}
+
+.list{
+  padding-bottom: 15px;
+  margin-bottom: 35px;
+}
+
+#danger{
+  color: #FF4167;
+}
+
+#menu{
+  height: 68vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 auto;
+}
+
+#footer{
+  padding-top: 15px;
+  position: relative;
+  width: 100%;
+  font-size: 24px;
+  text-align: center;
+}
+
+a{
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.active i{
+  color: #fb8b24;
+}

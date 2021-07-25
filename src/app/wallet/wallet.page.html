@@ -1,0 +1,366 @@
+<ion-content>
+  <div id="background">
+    <div id="container">
+
+      <div id="header">
+        <div id="title">E-Wallet</div>
+      </div>
+
+      <div id="page-titlebar">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <div id="title">
+                My Wallet
+              </div>
+            </ion-col>
+            <ion-col id="search" (click)="search()">
+              <div>
+                <div id="search-active">
+                  <ion-input placeholder="Search"><i class="ri-search-2-line"></i></ion-input>
+                </div>
+              </div>
+                <div id="search-bar" (click)="close()">
+                  <i class="ri-search-2-line"></i>
+                </div>
+                <div id="close-search" >
+                  <i class="ri-close-circle-fill" (click)="expand()"></i>
+                </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+
+      <div id="menu-segment">
+        <ion-segment value="all" scrollable="true">
+          <ion-segment-button value="all">
+            <ion-label>All</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="banking">
+            <ion-label>Banking</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="shopping">
+            <ion-label>Shopping</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Travel">
+            <ion-label>Travel</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Others">
+            <ion-label>Others</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+
+
+      <div id="all-container">
+        <ion-list lines="none">
+            <ion-item *ngFor="let item of results" (click)="select(item.id, item.title, item.category)">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="card-title">
+                    <img src="{{item.logo}}"/>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-content">
+                    {{item.content}}
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-footer">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="5">
+                          <div class="footer-title">
+                            Card Holder
+                            <p>{{item.firstname}} {{item.lastname}}</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col size="5">
+                          <div class="footer-title">
+                            Expiry Date
+                            <p>{{item.expiryDate}}</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col>
+                          <div class="footer-title">
+                            CVV
+                            <p>{{item.tier}}</p>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+
+        </ion-list>
+      </div>
+
+  <!-- <div id="all-container">
+        <ion-list lines="none">
+          <ion-item id="france" (click)="moreTravel('france')">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="card-title">
+                    Air France
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-content">
+                    *** *** *** 105
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-footer">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="5">
+                          <div class="footer-title">
+                            Card Holder
+                            <p>Araba Takyi</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col size="5">
+                          <div class="footer-title">
+                            Expiry Date
+                            <p>-</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col>
+                          <div class="footer-title">
+                            Tier
+                            <p>Blue</p>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+          <ion-item  id="amazon" (click)="moreShop('amazon')">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="card-title">
+                    <img src="../../assets/icon/Icon payment-amazon@2x.png">
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-content">
+                    **** **** **** 4377
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-footer">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="4">
+                          <div class="footer-title">
+                            Card Holder
+                            <p>Araba Takyi</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col size="4">
+                          <div class="footer-title">
+                            Expiry Date
+                            <p>10/22</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col size="2">
+                          <div class="footer-title">
+                            CVV
+                            <p>***</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col>
+                          <div class="mastercard">
+                            <img src="../../assets/icon/Icon simple-mastercard@2x.png">
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+
+          <ion-item id="bog" (click)="moreBank('bog')">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="10">
+                  <div class="card-title">
+                    Bank of Ghana
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-content">
+                    **** **** **** 6632
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-footer">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="4">
+                          <div class="footer-title">
+                            Card Holder
+                            <p>Araba Takyi</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col size="4">
+                          <div class="footer-title">
+                            Expiry Date
+                            <p>12/23</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col size="2">
+                          <div class="footer-title">
+                            CVV
+                            <p>***</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col>
+                          <div class="visa">
+                            <img src="../../assets/icon/Icon payment-visa@2x.png">
+                          </div>
+                        </ion-col>
+
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+          <ion-item id="shoprite" (click)="moreShop('shoprite')">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="10">
+                  <div class="card-title">
+                    SHOPRITE
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-content">
+                    Gift Card
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-footer">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="4">
+                          <div class="footer-title">
+                            Card Holder
+                            <p>Araba Takyi</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col size="4">
+                          <div class="footer-title">
+                            Expiry Date
+                            <p>09/21</p>
+                          </div>
+                        </ion-col>
+
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+        </ion-list>
+      </div> -->
+
+      <!-- footer -->
+    <div id="footer">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div id="wallets">
+              <a routerLink="/wallet" routerLinkActive="active"><i class="ri-wallet-line"></i></a>
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div id="analytics">
+              <a routerLink="/analytics" routerLinkActive="active"><i class="ri-donut-chart-line"></i></a>
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div id="notifications">
+              <a routerLink="/notifications" routerLinkActive="active"><i class="ri-notification-4-line"></i></a>
+            </div>
+          </ion-col>
+
+          <ion-col>
+            <div id="settings">
+              <a routerLink="/settings" routerLinkActive="active"><i class="ri-user-settings-line"></i></a>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+
+    </div>
+
+
+  </div>
+</ion-content>

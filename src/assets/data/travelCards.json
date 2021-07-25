@@ -1,0 +1,31 @@
+[
+  {
+  "id": "france",
+  "title": "Air France",
+  "logo": "/assets/icon/air-france@2x.png",
+  "content": "209 327 289 105",
+  "maskedContent": "*** *** *** 105",
+  "firstname": "Araba",
+  "lastname": "Takyi",
+  "expiryDate": "-",
+  "tier": "-",
+  "maskedtier": "",
+  "category": "travel"
+  },
+  {
+    "id": "amazon",
+    "logo": "/assets/icon/Icon payment-amazon@2x.png",
+    "title": "Amazon",
+    "content": "3902 1289 4958 4377",
+    "maskedContent": "**** **** **** 4377",
+    "firstname": "Araba",
+    "lastname": "Takyi",
+    "expiryDate": "12/23",
+    "tier": "123",
+    "maskedtier": "***",
+    "category": "shopping"
+    }
+]
+
+
+
