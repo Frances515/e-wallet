@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./wallet.page.scss'],
 })
 export class WalletPage implements OnInit {
-  results: any;
+  travel: any;
 
 
   constructor(public actionSheetController: ActionSheetController, private router: Router, public alertController: AlertController) { }
@@ -133,8 +133,8 @@ export class WalletPage implements OnInit {
   }
 
   ngOnInit() {
-    fetch('./assets/data/cardOptions.json').then(res => res.json()).then(json => {
-      this.results = json;
+    fetch('./assets/data/travelCards.json').then(res => res.json()).then(json => {
+      this.travel = json;
     });
     this.expand();
   }

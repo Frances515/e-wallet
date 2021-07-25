@@ -4,27 +4,30 @@
   "title": "Air France",
   "logo": "/assets/icon/air-france@2x.png",
   "content": "209 327 289 105",
-  "maskedContent": "*** *** *** 105",
   "firstname": "Araba",
   "lastname": "Takyi",
-  "expiryDate": "-",
-  "tier": "-",
-  "maskedtier": "",
+  "tier": "Blue",
   "category": "travel"
   },
   {
-    "id": "amazon",
+    "id": "sncf",
     "logo": "/assets/icon/Icon payment-amazon@2x.png",
-    "title": "Amazon",
-    "content": "3902 1289 4958 4377",
-    "maskedContent": "**** **** **** 4377",
+    "title": "SNCF",
+    "content": "390212894 958437794",
     "firstname": "Araba",
     "lastname": "Takyi",
-    "expiryDate": "12/23",
-    "tier": "123",
-    "maskedtier": "***",
-    "category": "shopping"
-    }
+    "tier": "Voyageur",
+    "category": "travel"
+    },{
+      "id": "emirates",
+      "logo": "/assets/icon/Icon payment-amazon@2x.png",
+      "title": "Emirates",
+      "content": "452 654 234 695",
+      "firstname": "Araba",
+      "lastname": "Takyi",
+      "tier": "Gold",
+      "category": "travel"
+      }
 ]
 
 

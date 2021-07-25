@@ -52,10 +52,149 @@
         </ion-segment>
       </div>
 
-
-      <div id="all-container">
+      <div id="travel-container" class="cards-container">
         <ion-list lines="none">
-            <ion-item *ngFor="let item of results" (click)="select(item.id, item.title, item.category)">
+          <ion-item *ngFor="let item of travel" (click)="select(item.id, item.title, item.category)">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div class="card-title">
+                  <img src="{{item.logo}}"/>
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <div class="card-content">
+                  {{item.content}}
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <div class="card-footer">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="5">
+                        <div class="footer-title">
+                          Card Holder
+                          <p>{{item.firstname}} {{item.lastname}}</p>
+                        </div>
+                      </ion-col>
+
+                      <ion-col size="5">
+                        <div class="footer-title">
+                          Tier
+                          <p>{{item.tier}}</p>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        </ion-list>
+      </div>
+
+      <!-- <div id="shopping-container" class="cards-container">
+        <ion-list lines="none">
+          <ion-item *ngFor="let item of travel" (click)="select(item.id, item.title, item.category)">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <div class="card-title">
+                  <img src="{{item.logo}}"/>
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <div class="card-content">
+                  {{item.content}}
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <div class="card-footer">
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col size="5">
+                        <div class="footer-title">
+                          Card Holder - shopping
+                          <p>{{item.firstname}} {{item.lastname}}</p>
+                        </div>
+                      </ion-col>
+
+                      <ion-col size="5">
+                        <div class="footer-title">
+                          Tier
+                          <p>{{item.tier}}</p>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        </ion-list>
+      </div> -->
+
+      <!-- <div id="all-container">
+        <ion-list lines="none">
+            <ion-item *ngFor="let item of travel" (click)="select(item.id, item.title, item.category)">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="card-title">
+                    <img src="{{item.logo}}"/>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-content">
+                    {{item.content}}
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-footer">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="5">
+                          <div class="footer-title">
+                            Card Holder
+                            <p>{{item.firstname}} {{item.lastname}}</p>
+                          </div>
+                        </ion-col>
+
+                        <ion-col size="5">
+                          <div class="footer-title">
+                            Tier
+                            <p>{{item.tier}}</p>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item> -->
+
+          <!-- <ion-item *ngFor="let item of travel" (click)="select(item.id, item.title, item.category)">
             <ion-grid>
               <ion-row>
                 <ion-col>
@@ -104,11 +243,11 @@
                 </ion-col>
               </ion-row>
             </ion-grid>
-          </ion-item>
+          </ion-item> -->
 
 
-        </ion-list>
-      </div>
+        <!-- </ion-list>
+      </div> -->
 
   <!-- <div id="all-container">
         <ion-list lines="none">
