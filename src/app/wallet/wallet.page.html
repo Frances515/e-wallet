@@ -33,20 +33,20 @@
 
 
       <div id="menu-segment">
-        <ion-segment value="all" scrollable="true">
-          <ion-segment-button value="all">
+        <ion-segment value="banking" scrollable="true">
+          <!-- <ion-segment-button value="all">
             <ion-label>All</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="banking">
+          </ion-segment-button> -->
+          <ion-segment-button value="banking" (click)="showBanking()">
             <ion-label>Banking</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="shopping">
+          <ion-segment-button value="shopping" (click)="showShopping()">
             <ion-label>Shopping</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="Travel">
+          <ion-segment-button value="Travel" (click)="showTravel()">
             <ion-label>Travel</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="Others">
+          <ion-segment-button value="Others" (click)="showOthers()">
             <ion-label>Others</ion-label>
           </ion-segment-button>
         </ion-segment>
@@ -98,6 +98,55 @@
           </ion-grid>
         </ion-item>
         </ion-list>
+      </div>
+
+      <div id="shopping-container" class="cards-container" >
+        <ion-list lines="none">
+          <ion-item *ngFor="let item of shop" (click)="select(item.id, item.title, item.category)">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="card-title">
+                    <img src="{{item.logo}}" />
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-content">
+                    {{item.content}}
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-footer">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="5">
+                          <div class="footer-title">
+                            Card Holder
+                            <p>{{item.firstname}} {{item.lastname}}</p>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div id="banking-container" class="cards-container">
+        hello - banking
+      </div>
+
+      <div id="others-container" class="cards-container">
+        hello-others
       </div>
 
       <!-- <div id="shopping-container" class="cards-container">

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "amazon",
+    "title": "Amazon",
+    "logo": "assets/icon/Icon payment-amazon@2x.png",
+    "content": "3902 1289 4958 4377",
+    "firstname": "Araba",
+    "lastname": "Takyi",
+    "category": "shopping",
+    "status": true
+    },
+  {
+  "id": "shoprite",
+  "title": "Shoprite",
+  "logo": "assets/icon/shoprite@2x.png",
+  "content": "384234 425343 253427",
+  "firstname": "Araba",
+  "lastname": "Takyi",
+  "category": "shopping",
+  "status": true
+  }
+]

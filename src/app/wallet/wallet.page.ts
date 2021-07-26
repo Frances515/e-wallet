@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class WalletPage implements OnInit {
   travel: any;
+  shop: any;
 
 
   constructor(public actionSheetController: ActionSheetController, private router: Router, public alertController: AlertController) { }
@@ -133,10 +134,24 @@ export class WalletPage implements OnInit {
   }
 
   ngOnInit() {
-    fetch('./assets/data/travelCards.json').then(res => res.json()).then(json => {
+    this.travelJson();
+    this.shopJson();
+    this.showBanking();
+    this.expand();
+  }
+
+  travelJson() {
+    fetch('./assets/data/travelCards.json').then(res =>
+      res.json()).then(json => {
       this.travel = json;
     });
-    this.expand();
+  }
+
+  shopJson() {
+    fetch('./assets/data/shoppingCards.json').then(res =>
+      res.json()).then(json => {
+      this.shop = json;
+    });
   }
 
   // moreTravel(param) {
@@ -178,6 +193,54 @@ export class WalletPage implements OnInit {
     searchBar.style.visibility = 'visible';
     searchActive.style.visibility = 'hidden';
     closeSearch.style.visibility = 'hidden';
+  }
+
+  showBanking() {
+    const travel = document.getElementById('travel-container');
+    const shopping = document.getElementById('shopping-container');
+    const banking = document.getElementById('banking-container');
+    const others = document.getElementById('others-container');
+
+    banking.style.visibility = 'visible';
+    shopping.style.visibility = 'hidden';
+    travel.style.visibility = 'hidden';
+    others.style.visibility = 'hidden';
+  }
+
+  showShopping() {
+    const travel = document.getElementById('travel-container');
+    const shopping = document.getElementById('shopping-container');
+    const banking = document.getElementById('banking-container');
+    const others = document.getElementById('others-container');
+
+    shopping.style.visibility = 'visible';
+    travel.style.visibility = 'hidden';
+    banking.style.visibility = 'hidden';
+    others.style.visibility = 'hidden';
+  }
+
+  showTravel() {
+    const travel = document.getElementById('travel-container');
+    const shopping = document.getElementById('shopping-container');
+    const banking = document.getElementById('banking-container');
+    const others = document.getElementById('others-container');
+
+    travel.style.visibility = 'visible';
+    shopping.style.visibility = 'hidden';
+    banking.style.visibility = 'hidden';
+    others.style.visibility = 'hidden';
+  }
+
+  showOthers() {
+    const travel = document.getElementById('travel-container');
+    const shopping = document.getElementById('shopping-container');
+    const banking = document.getElementById('banking-container');
+    const others = document.getElementById('others-container');
+
+    others.style.visibility = 'visible';
+    shopping.style.visibility = 'hidden';
+    banking.style.visibility = 'hidden';
+    travel.style.visibility = 'hidden';
   }
 
 

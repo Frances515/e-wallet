@@ -109,6 +109,7 @@ ion-segment-button {
   height: 62vh;
   overflow-y: auto;
   overflow-x: hidden;
+  width: 90%;
 }
 
 ion-item{
@@ -120,8 +121,7 @@ ion-item{
   backdrop-filter: blur(3px);
   --inner-padding-start: 15px;
   // height: 156px;
-  // width:307px;
-
+  // --padding-end: 0px !important;
 }
 
 ion-list{
@@ -162,7 +162,7 @@ ion-grid{
 }
 
 .card-title img{
-  width: 54px;
+  width: 56px;
   height: 16px;
 }
 
@@ -198,5 +198,9 @@ a{
   color: #fb8b24;
 }
 
+.cards-container{
+  position: absolute;
+  margin: 0 auto;
+}
 
 
