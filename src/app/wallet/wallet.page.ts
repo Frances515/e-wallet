@@ -16,9 +16,9 @@ export class WalletPage implements OnInit {
 
   constructor(public actionSheetController: ActionSheetController, private router: Router, public alertController: AlertController) { }
 
-  async travelActionSheet(id, title) {
+  async travelActionSheet(idx) {
     const actionSheet = await this.actionSheetController.create({
-      header: title,
+      header: this.travel[idx].title,
       cssClass: 'action-sheet-cards',
       buttons: [{
         text: 'View Card Number',
@@ -39,7 +39,7 @@ export class WalletPage implements OnInit {
         text: 'Remove',
         cssClass: 'remove',
         handler: () => {
-          this.deleteCard(id);
+          this.deleteCard(idx);
 
         }
       }]
@@ -129,8 +129,9 @@ export class WalletPage implements OnInit {
   }
 
   delete(param) {
-    const item = document.getElementById(param);
-    item.remove();
+    this.travel[param].status = false;
+    // const item = document.getElementById(param);
+    // item.remove();
   }
 
   ngOnInit() {
@@ -169,9 +170,9 @@ export class WalletPage implements OnInit {
   search() {
   }
 
-  select(id, title, category) {
-    if (category === 'travel') {
-      this.travelActionSheet(id, title);
+  select(idx) {
+    if (this.travel[idx].category === 'travel') {
+      this.travelActionSheet(idx);
     }
   }
 

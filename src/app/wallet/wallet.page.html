@@ -53,9 +53,9 @@
       </div>
 
       <div id="travel-container" class="cards-container">
-        <ion-list lines="none">
-          <ion-item *ngFor="let item of travel" (click)="select(item.id, item.title, item.category)">
-          <ion-grid>
+        <ion-list lines="none" *ngFor="let item of travel; let idx= index" >
+          <ion-item *ngIf="item.status" (click)="select(idx)">
+          <ion-grid >
             <ion-row>
               <ion-col>
                 <div class="card-title">
