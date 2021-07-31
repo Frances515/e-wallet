@@ -54,12 +54,12 @@
 
       <div id="travel-container" class="cards-container">
         <ion-list lines="none" *ngFor="let item of travel; let idx= index" >
-          <ion-item *ngIf="item.status" (click)="select(idx)">
+          <ion-item *ngIf="item.status" (click)="select(idx, item.category)">
           <ion-grid >
             <ion-row>
               <ion-col>
                 <div class="card-title">
-                  <img src="{{item.logo}}"/>
+                  <img src="{{item.logo}}" alt=""/>
                 </div>
               </ion-col>
             </ion-row>
@@ -101,8 +101,8 @@
       </div>
 
       <div id="shopping-container" class="cards-container" >
-        <ion-list lines="none">
-          <ion-item *ngFor="let item of shop" (click)="select(item.id, item.title, item.category)">
+        <ion-list lines="none" *ngFor="let item of shop; let idx= index" >
+          <ion-item *ngIf="item.status" (click)="select(idx, item.category)">
             <ion-grid>
               <ion-row>
                 <ion-col>
@@ -142,11 +142,11 @@
       </div>
 
       <div id="banking-container" class="cards-container">
-        hello - banking
+       <!-- hello - banking -->
       </div>
 
-      <div id="others-container" class="cards-container">
-        hello-others
+<div id="others-container" class="cards-container">
+        <!-- hello-others -->
       </div>
 
       <!-- <div id="shopping-container" class="cards-container">

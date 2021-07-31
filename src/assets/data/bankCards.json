@@ -1,0 +1,41 @@
+[
+  {
+    "id": "barclays",
+    "title": "Barclays",
+    "logo": "assets/icon/barclays.svg",
+    "service": "assets/icon/Icon payment-visa@2x.png",
+    "content": "3902 1289 4958 1278",
+    "masked": "**** **** **** 1278",
+    "firstname": "Araba",
+    "lastname": "Takyi",
+    "expiry": "12/23",
+    "category": "banking",
+    "status": true
+    },
+  {
+    "id": "StandardBank",
+    "title": "Standard Bank",
+    "logo": "assets/icon/standard_bank.svg",
+    "service": "assets/icon/Icon simple-mastercard@2x.png",
+    "content": "3842 4325 8953",
+    "masked": "**** **** **** 8953",
+    "firstname": "Araba",
+    "lastname": "Takyi",
+    "expiry": "03/21",
+    "category": "banking",
+    "status": true
+  },
+  {
+    "id": "bankOfGhana",
+    "title": "Bank of Ghana",
+    "logo": "assets/icon/bank_of_ghana.svg",
+    "service": "assets/icon/bank_of_ghana.svg",
+    "content": "3475 4582 4890 6632",
+    "masked": "**** **** **** 6632",
+    "firstname": "Araba",
+    "lastname": "Takyi",
+    "expiry": "09/26",
+    "category": "banking",
+    "status": true
+    }
+]

@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActionSheetController,AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-wallet',
   templateUrl: './wallet.page.html',
@@ -13,8 +12,9 @@ export class WalletPage implements OnInit {
   travel: any;
   shop: any;
 
-
-  constructor(public actionSheetController: ActionSheetController, private router: Router, public alertController: AlertController) { }
+  constructor(private router: Router,
+              public alertController: AlertController,
+              public actionSheetController: ActionSheetController){ }
 
   async travelActionSheet(idx) {
     const actionSheet = await this.actionSheetController.create({
@@ -84,9 +84,9 @@ export class WalletPage implements OnInit {
   }
 
 
-  async shoppingActionSheet(param) {
+  async shoppingActionSheet(idx) {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Shop Now',
+      header: this.shop[idx].title,
       cssClass: 'action-sheet-cards',
       buttons: [{
         text: 'View Card Number',
@@ -97,7 +97,7 @@ export class WalletPage implements OnInit {
         text: 'Remove',
         cssClass: 'remove',
         handler: () => {
-          this.deleteCard(param);
+          this.deleteCard(idx);
         }
       }]
     });
@@ -121,6 +121,7 @@ export class WalletPage implements OnInit {
           cssClass: 'delete',
           handler: () => {
             this.delete(param);
+            window.alert('Directory exists');
           }
         }
       ]
@@ -130,8 +131,6 @@ export class WalletPage implements OnInit {
 
   delete(param) {
     this.travel[param].status = false;
-    // const item = document.getElementById(param);
-    // item.remove();
   }
 
   ngOnInit() {
@@ -155,10 +154,6 @@ export class WalletPage implements OnInit {
     });
   }
 
-  // moreTravel(param) {
-  //   this.travelActionSheet(param);
-  // }
-
   moreBank(param) {
     this.bankActionSheet(param);
   }
@@ -170,9 +165,13 @@ export class WalletPage implements OnInit {
   search() {
   }
 
-  select(idx) {
-    if (this.travel[idx].category === 'travel') {
+  select(idx, cdType) {
+    // window.alert(idx);
+    if (cdType === 'travel') {
       this.travelActionSheet(idx);
+    }
+    if (cdType === 'shopping') {
+      this.shoppingActionSheet(idx);
     }
   }
 
