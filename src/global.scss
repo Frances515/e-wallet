@@ -129,7 +129,12 @@
 .alert_popup{
   --background:rgba(52, 59, 80, 0.80) !important;
   backdrop-filter: blur(1.5px)  !important;
+  // background-color: red !important;
+}
 
+.alert_popup input{
+  background-color:#0F1524 !important;
+  text-align: center !important;
 }
 
 .remove{

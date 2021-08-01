@@ -122,7 +122,7 @@ export class WalletPage implements OnInit {
       },{
         text: 'View Card Number',
         handler: () => {
-          console.log('Play clicked');
+          this.displayCardNumber(idx);
         }
       },{
         text: 'View CVV',
@@ -168,7 +168,7 @@ export class WalletPage implements OnInit {
 
 
 // Delete Functions
-  async deleteCard(param) {
+ async deleteCard(param) {
     const alert = await this.alertController.create({
       cssClass: 'alert_popup',
       header: 'Delete Card?',
@@ -261,5 +261,46 @@ export class WalletPage implements OnInit {
     closeSearch.style.visibility = 'hidden';
   }
 
+// View Transaction Function
+  transaction(idx) {
+  }
+
+// View Card Number
+async displayCardNumber(idx) {
+  const alert = await this.alertController.create({
+    cssClass: 'alert_popup',
+    header: 'Validate',
+    message: 'Enter PIN to view card number.',
+    inputs: [{
+      type: 'text',
+      placeholder: 'Enter Pin'
+    }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        cssClass: 'secondary',
+        handler: () => {
+        }
+      }, {
+        text: 'Validate',
+        cssClass: 'secondary',
+        handler: () => {
+          this.viewCardNumber(idx);
+        }
+      }
+    ]
+  });
+  await alert.present();
+}
+
+  async viewCardNumber(idx) {
+    const alert = await this.alertController.create({
+      cssClass: 'alert_popup',
+      subHeader: 'Your ' + this.bank[idx].title + ' card number.' ,
+      message: this.bank[idx].content,
+    });
+    await alert.present();
+  }
 
 }
