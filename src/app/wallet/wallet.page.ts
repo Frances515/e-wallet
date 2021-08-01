@@ -11,191 +11,22 @@ import { Router } from '@angular/router';
 export class WalletPage implements OnInit {
   travel: any;
   shop: any;
+  bank: any;
 
   constructor(private router: Router,
               public alertController: AlertController,
-              public actionSheetController: ActionSheetController){ }
+    public actionSheetController: ActionSheetController) { }
 
-  async travelActionSheet(idx) {
-    const actionSheet = await this.actionSheetController.create({
-      header: this.travel[idx].title,
-      cssClass: 'action-sheet-cards',
-      buttons: [{
-        text: 'View Card Number',
-        handler: () => {
-          console.log('Share clicked');
-        }
-      }, {
-        text: 'View History',
-        handler: () => {
-          console.log('Play clicked');
-        }
-      }, {
-        text: 'View Miles',
-        handler: () => {
-          console.log('Play clicked');
-        }
-      },{
-        text: 'Remove',
-        cssClass: 'remove',
-        handler: () => {
-          this.deleteCard(idx);
-
-        }
-      }]
-    });
-    await actionSheet.present();
-
-    const { role } = await actionSheet.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-
-  async bankActionSheet(param) {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Banking',
-      cssClass: 'action-sheet-cards',
-      buttons: [{
-        text: 'View Transactions',
-        handler: () => {
-          this.router.navigateByUrl('/details');
-        }
-      },{
-        text: 'View Card Number',
-        handler: () => {
-          console.log('Play clicked');
-        }
-      },{
-        text: 'Send Money',
-        handler: () => {
-        }
-      },{
-        text: 'Remove',
-        cssClass: 'remove',
-        handler: () => {
-          this.deleteCard(param);
-        }
-      }]
-    });
-    await actionSheet.present();
-
-    const { role } = await actionSheet.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
-
-
-  async shoppingActionSheet(idx) {
-    const actionSheet = await this.actionSheetController.create({
-      header: this.shop[idx].title,
-      cssClass: 'action-sheet-cards',
-      buttons: [{
-        text: 'View Card Number',
-        handler: () => {
-          console.log('Share clicked');
-        }
-      },{
-        text: 'Remove',
-        cssClass: 'remove',
-        handler: () => {
-          this.deleteCard(idx);
-        }
-      }]
-    });
-    await actionSheet.present();
-  }
-
-
-  async deleteCard(param) {
-    const alert = await this.alertController.create({
-      cssClass: 'alert_popup',
-      header: 'Delete Card?',
-      message: 'Are you sure you want to delete this card?',
-      buttons: [
-        {
-          text: 'Cancel',
-          cssClass: 'secondary',
-          handler: () => {
-          }
-        }, {
-          text: 'Delete',
-          cssClass: 'delete',
-          handler: () => {
-            this.delete(param);
-            window.alert('Directory exists');
-          }
-        }
-      ]
-    });
-    await alert.present();
-  }
-
-  delete(param) {
-    this.travel[param].status = false;
-  }
-
-  ngOnInit() {
-    this.travelJson();
-    this.shopJson();
-    this.showBanking();
-    this.expand();
-  }
-
-  travelJson() {
-    fetch('./assets/data/travelCards.json').then(res =>
-      res.json()).then(json => {
-      this.travel = json;
-    });
-  }
-
-  shopJson() {
-    fetch('./assets/data/shoppingCards.json').then(res =>
-      res.json()).then(json => {
-      this.shop = json;
-    });
-  }
-
-  moreBank(param) {
-    this.bankActionSheet(param);
-  }
-
-  moreShop(param) {
-    this.shoppingActionSheet(param);
-  }
-
-  search() {
-  }
-
-  select(idx, cdType) {
-    // window.alert(idx);
-    if (cdType === 'travel') {
-      this.travelActionSheet(idx);
+    ngOnInit() {
+      this.travelJson();
+      this.shopJson();
+      this.showBanking();
+      this.expand();
     }
-    if (cdType === 'shopping') {
-      this.shoppingActionSheet(idx);
-    }
-  }
 
-  close() {
-    const searchBar = document.getElementById('search-bar');
-    const searchActive = document.getElementById('search-active');
-    const closeSearch = document.getElementById('close-search');
-
-    searchBar.style.visibility = 'hidden';
-    searchActive.style.visibility = 'visible';
-    closeSearch.style.visibility = 'visible';
-  }
-
-  expand() {
-    const searchBar = document.getElementById('search-bar');
-    const closeSearch = document.getElementById('close-search');
-    const searchActive = document.getElementById('search-active');
-
-    searchBar.style.visibility = 'visible';
-    searchActive.style.visibility = 'hidden';
-    closeSearch.style.visibility = 'hidden';
-  }
-
+  // Show Category Functions
   showBanking() {
+    this.bankJson();
     const travel = document.getElementById('travel-container');
     const shopping = document.getElementById('shopping-container');
     const banking = document.getElementById('banking-container');
@@ -241,6 +72,193 @@ export class WalletPage implements OnInit {
     shopping.style.visibility = 'hidden';
     banking.style.visibility = 'hidden';
     travel.style.visibility = 'hidden';
+  }
+
+
+// Category Templates
+  async travelActionSheet(idx) {
+    const actionSheet = await this.actionSheetController.create({
+      header: this.travel[idx].title,
+      cssClass: 'action-sheet-cards',
+      buttons: [{
+        text: 'View Card Number',
+        handler: () => {
+          console.log('Share clicked');
+        }
+      }, {
+        text: 'View History',
+        handler: () => {
+          console.log('Play clicked');
+        }
+      }, {
+        text: 'View Miles',
+        handler: () => {
+          console.log('Play clicked');
+        }
+      },{
+        text: 'Remove',
+        cssClass: 'remove',
+        handler: () => {
+          this.deleteCard(idx);
+
+        }
+      }]
+    });
+    await actionSheet.present();
+
+    const { role } = await actionSheet.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
+  async bankActionSheet(idx) {
+    const actionSheet = await this.actionSheetController.create({
+      header: this.bank[idx].title,
+      cssClass: 'action-sheet-cards',
+      buttons: [{
+        text: 'View Transactions',
+        handler: () => {
+          this.router.navigateByUrl('/details');
+        }
+      },{
+        text: 'View Card Number',
+        handler: () => {
+          console.log('Play clicked');
+        }
+      },{
+        text: 'View CVV',
+        handler: () => {
+        }
+      },{
+        text: 'Send Money',
+        handler: () => {
+        }
+      },{
+        text: 'Remove',
+        cssClass: 'remove',
+        handler: () => {
+          this.deleteCard(idx);
+        }
+      }]
+    });
+    await actionSheet.present();
+
+    const { role } = await actionSheet.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
+  async shoppingActionSheet(idx) {
+    const actionSheet = await this.actionSheetController.create({
+      header: this.shop[idx].title,
+      cssClass: 'action-sheet-cards',
+      buttons: [{
+        text: 'View Card Number',
+        handler: () => {
+          console.log('Share clicked');
+        }
+      },{
+        text: 'Remove',
+        cssClass: 'remove',
+        handler: () => {
+          this.deleteCard(idx);
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+
+
+// Delete Functions
+  async deleteCard(param) {
+    const alert = await this.alertController.create({
+      cssClass: 'alert_popup',
+      header: 'Delete Card?',
+      message: 'Are you sure you want to delete this card?',
+      buttons: [
+        {
+          text: 'Cancel',
+          cssClass: 'secondary',
+          handler: () => {
+          }
+        }, {
+          text: 'Delete',
+          cssClass: 'delete',
+          handler: () => {
+            this.delete(param);
+            window.alert('Directory exists');
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  delete(param) {
+    this.travel[param].status = false;
+  }
+
+
+// JSON Files
+  travelJson() {
+    fetch('./assets/data/travelCards.json').then(res =>
+      res.json()).then(json => {
+      this.travel = json;
+    });
+  }
+
+  shopJson() {
+    fetch('./assets/data/shoppingCards.json').then(res =>
+      res.json()).then(json => {
+      this.shop = json;
+    });
+  }
+
+  bankJson() {
+    fetch('./assets/data/bankCards.json').then(res =>
+      res.json()).then(json => {
+      this.bank = json;
+    });
+  }
+
+
+// Search Function
+  search() {
+  }
+
+
+// Select Function
+  select(idx, cdType) {
+    if (cdType === 'travel') {
+      this.travelActionSheet(idx);
+    }
+    if (cdType === 'shopping') {
+      this.shoppingActionSheet(idx);
+    }
+    if (cdType === 'banking') {
+      this.bankActionSheet(idx);
+    }
+  }
+
+// Close Search Bar Function
+  close() {
+    const searchBar = document.getElementById('search-bar');
+    const searchActive = document.getElementById('search-active');
+    const closeSearch = document.getElementById('close-search');
+
+    searchBar.style.visibility = 'hidden';
+    searchActive.style.visibility = 'visible';
+    closeSearch.style.visibility = 'visible';
+  }
+
+
+// Expand Search Bar Function
+  expand() {
+    const searchBar = document.getElementById('search-bar');
+    const closeSearch = document.getElementById('close-search');
+    const searchActive = document.getElementById('search-active');
+
+    searchBar.style.visibility = 'visible';
+    searchActive.style.visibility = 'hidden';
+    closeSearch.style.visibility = 'hidden';
   }
 
 

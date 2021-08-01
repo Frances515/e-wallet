@@ -129,10 +129,16 @@ ion-list{
   --ion-border-color: none !important;
 
 }
+.card-title img{
+  height: 16px;
+}
 
 .card-title{
-  font-family: MaisonNeue Bold;
-  font-size: 16px;
+  padding-top: 15px;
+}
+
+.card-service{
+  width: 42px;
   padding-top: 15px;
 }
 
@@ -161,10 +167,7 @@ ion-grid{
   color: #FFFFFF;
 }
 
-.card-title img{
-  width: 56px;
-  height: 16px;
-}
+
 
 .mastercard img{
   width: 36px;
@@ -176,17 +179,17 @@ ion-grid{
   height: 16px;
 }
 
-
 #footer{
-  // padding-bottom: 10px;
   padding-top: 15px;
-  position: fixed;
-  width: 100vw;
-  // padding-left: 10px;
-  // padding-right: 10px;
+  position: absolute;
+  width: 100%;
   font-size: 24px;
-  text-align: center;
   bottom: 20px !important;
+}
+
+#footer-container{
+  padding-right: 25px !important;
+  padding-left: 10px !important;
 }
 
 a{

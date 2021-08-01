@@ -142,7 +142,61 @@
       </div>
 
       <div id="banking-container" class="cards-container">
-       <!-- hello - banking -->
+        <ion-list lines="none" *ngFor="let item of bank; let idx= index" >
+          <ion-item *ngIf="item.status" (click)="select(idx, item.category)">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="10">
+                  <div class="card-title">
+                    <img src="{{item.logo}}" />
+                  </div>
+                </ion-col>
+                <ion-col class="ion-align-self-end">
+                  <div class="card-service">
+                    <img src="{{item.service}}" />
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-content">
+                    {{item.content}}
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <div class="card-footer">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col size="4">
+                          <div class="footer-title">
+                            Card Holder
+                            <p>{{item.firstname}} {{item.lastname}}</p>
+                          </div>
+                        </ion-col>
+                        <ion-col size="4">
+                          <div class="footer-title">
+                            Expiry Date
+                            <p>{{item.expiry}}</p>
+                          </div>
+                        </ion-col>
+                        <ion-col size="4">
+                          <div class="footer-title">
+                            CVV
+                            <p>{{item.cvvMasked}}</p>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
       </div>
 
 <div id="others-container" class="cards-container">
@@ -516,35 +570,38 @@
       </div> -->
 
       <!-- footer -->
-    <div id="footer">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <div id="wallets">
-              <a routerLink="/wallet" routerLinkActive="active"><i class="ri-wallet-line"></i></a>
-            </div>
-          </ion-col>
+    <div id="footer-container">
+      <div id="footer">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3" class="ion-align-self-center">
+              <div id="wallets">
+                <a routerLink="/wallet" routerLinkActive="active"><i class="ri-wallet-line"></i></a>
+              </div>
+            </ion-col>
 
-          <ion-col>
-            <div id="analytics">
-              <a routerLink="/analytics" routerLinkActive="active"><i class="ri-donut-chart-line"></i></a>
-            </div>
-          </ion-col>
+            <ion-col size="3" class="ion-align-self-center">
+              <div id="analytics">
+                <a routerLink="/analytics" routerLinkActive="active"><i class="ri-donut-chart-line"></i></a>
+              </div>
+            </ion-col>
 
-          <ion-col>
-            <div id="notifications">
-              <a routerLink="/notifications" routerLinkActive="active"><i class="ri-notification-4-line"></i></a>
-            </div>
-          </ion-col>
+            <ion-col size="3" class="ion-align-self-center">
+              <div id="notifications">
+                <a routerLink="/notifications" routerLinkActive="active"><i class="ri-notification-4-line"></i></a>
+              </div>
+            </ion-col>
 
-          <ion-col>
-            <div id="settings">
-              <a routerLink="/settings" routerLinkActive="active"><i class="ri-user-settings-line"></i></a>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+            <ion-col size="3" class="ion-align-self-center">
+              <div id="settings">
+                <a routerLink="/settings" routerLinkActive="active"><i class="ri-user-settings-line"></i></a>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
     </div>
+
 
 
     </div>
