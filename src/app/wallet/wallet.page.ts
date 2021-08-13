@@ -157,8 +157,8 @@ export class WalletPage implements OnInit {
       buttons: [{
         text: 'View Transactions',
         handler: () => {
-          this.paramService.setParam(this.shop[idx][cdType]);
-          this.router.navigateByUrl('/details');
+          this.paramService.setParam(this.shop[idx]);
+          this.router.navigateByUrl('/shopping-details');
         }
       },{
         text: 'Remove',
