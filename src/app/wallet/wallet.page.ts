@@ -93,7 +93,8 @@ export class WalletPage implements OnInit {
       }, {
         text: 'View History',
         handler: () => {
-          console.log('Play clicked');
+          this.paramService.setParam(this.travel[idx]);
+          this.router.navigateByUrl('/travel-details');
         }
       }, {
         text: 'View Miles',
