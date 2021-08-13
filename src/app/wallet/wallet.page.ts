@@ -115,7 +115,7 @@ export class WalletPage implements OnInit {
     console.log('onDidDismiss resolved with role', role);
   }
 
-  async bankActionSheet(idx) {
+  async bankActionSheet(idx, cdType) {
     const actionSheet = await this.actionSheetController.create({
       header: this.bank[idx].title,
       cssClass: 'action-sheet-cards',
@@ -128,7 +128,7 @@ export class WalletPage implements OnInit {
       }, {
         text: 'View Card Number',
         handler: () => {
-          this.displayCardNumber(idx);
+          this.displayCardNumber(idx, cdType);
         }
       },{
         text: 'View CVV',
@@ -150,14 +150,15 @@ export class WalletPage implements OnInit {
     console.log('onDidDismiss resolved with role', role);
   }
 
-  async shoppingActionSheet(idx) {
+  async shoppingActionSheet(idx, cdType) {
     const actionSheet = await this.actionSheetController.create({
       header: this.shop[idx].title,
       cssClass: 'action-sheet-cards',
       buttons: [{
-        text: 'View Card Number',
+        text: 'View Transactions',
         handler: () => {
-          this.viewCardNumberShop(idx);
+          this.paramService.setParam(this.shop[idx][cdType]);
+          this.router.navigateByUrl('/details');
         }
       },{
         text: 'Remove',
@@ -235,10 +236,10 @@ export class WalletPage implements OnInit {
       this.travelActionSheet(idx);
     }
     if (cdType === 'shopping') {
-      this.shoppingActionSheet(idx);
+      this.shoppingActionSheet(idx, cdType);
     }
     if (cdType === 'banking') {
-      this.bankActionSheet(idx);
+      this.bankActionSheet(idx, cdType);
     }
   }
 
@@ -270,7 +271,7 @@ export class WalletPage implements OnInit {
   }
 
 // View Card Number - Bank
-async displayCardNumber(idx) {
+async displayCardNumber(idx, cdType) {
   const alert = await this.alertController.create({
     cssClass: 'alert_popup',
     header: 'Validate',
@@ -291,8 +292,11 @@ async displayCardNumber(idx) {
         text: 'Validate',
         cssClass: 'secondary',
         handler: (alertData) => {
-          if (alertData.pin === '000') {
+          if (alertData.pin === '000' && cdType === 'banking') {
             this.viewCardNumber(idx);
+          }
+          else if (alertData.pin === '000' && cdType === 'shopping') {
+            this.viewCardNumberShop(idx);
           }
           else if (alertData.pin === '') {
             this.emptyToast(idx);
@@ -348,6 +352,29 @@ async displayCvvNumber(idx) {
   await alert.present();
 }
 
+  // Error Toast
+async errorToast(idx) {
+  const toast = await this.toastController.create({
+    cssClass: 'toast',
+    message: 'Oops there is an error. Enter your pin again.',
+    duration: 2000,
+  });
+  toast.present();
+  this.displayCvvNumber(idx);
+
+}
+
+//Empty Input Toast
+async emptyToast(idx) {
+  const toast = await this.toastController.create({
+    cssClass: 'toast',
+    message: 'Please enter your pin.',
+    duration: 2000
+  });
+  toast.present();
+  this.displayCvvNumber(idx);
+}
+
 //Banking Functions
 
 //Card Number Display Function
@@ -376,28 +403,6 @@ async viewCvvNumber(idx) {
   }, 10000);
 }
 
-// Error Toast
-async errorToast(idx) {
-  const toast = await this.toastController.create({
-    cssClass: 'toast',
-    message: 'Oops there is an error. Enter your pin again.',
-    duration: 2000,
-  });
-  toast.present();
-  this.displayCvvNumber(idx);
-
-}
-
-//Empty Input Toast
-async emptyToast(idx) {
-  const toast = await this.toastController.create({
-    cssClass: 'toast',
-    message: 'Please enter your pin.',
-    duration: 2000
-  });
-  toast.present();
-  this.displayCvvNumber(idx);
-}
 
 //Shopping Functions
 
@@ -413,28 +418,5 @@ async viewCardNumberShop(idx) {
     alert.dismiss();
   }, 10000);
 }
-
-// // Error Toast
-// async shopErrorToast(idx) {
-//   const toast = await this.toastController.create({
-//     cssClass: 'toast',
-//     message: 'Oops there is an error. Enter your pin again.',
-//     duration: 2000,
-//   });
-//   toast.present();
-//   this.displayCvvNumber(idx);
-
-// }
-
-// //Empty Input Toast
-// async shopEmptyToast(idx) {
-//   const toast = await this.toastController.create({
-//     cssClass: 'toast',
-//     message: 'Please enter your pin.',
-//     duration: 2000
-//   });
-//   toast.present();
-//   this.displayCvvNumber(idx);
-// }
 
 }

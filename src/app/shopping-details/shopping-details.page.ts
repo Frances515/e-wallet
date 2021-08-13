@@ -3,30 +3,26 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { ParamService } from './../param.service';
 
-
-
 let transaction: any;
 let deposit: any;
 let withdraw: any;
 let myCard: any;
 let myAnalytics: any;
 
-
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.page.html',
-  styleUrls: ['./details.page.scss'],
+  selector: 'app-shopping-details',
+  templateUrl: './shopping-details.page.html',
+  styleUrls: ['./shopping-details.page.scss'],
 })
-export class DetailsPage implements OnInit {
+export class ShoppingDetailsPage implements OnInit {
   data: any;
   bank: any;
 
-
   constructor(private router: Router,
-              private activatedRoute: ActivatedRoute,
-              private paramService: ParamService) {
-    this.data = this.paramService.getParam();
-   }
+    private activatedRoute: ActivatedRoute,
+    private paramService: ParamService) {
+      this.data = this.paramService.getParam();
+     }
 
   ngOnInit() {
     this.showCard();
