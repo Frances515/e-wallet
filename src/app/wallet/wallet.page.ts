@@ -1,7 +1,10 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController,AlertController } from '@ionic/angular';
+import { ActionSheetController,AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+
+import { ParamService } from './../param.service';
+
 
 @Component({
   selector: 'app-wallet',
@@ -15,7 +18,9 @@ export class WalletPage implements OnInit {
 
   constructor(private router: Router,
               public alertController: AlertController,
-    public actionSheetController: ActionSheetController) { }
+              public actionSheetController: ActionSheetController,
+              public toastController: ToastController,
+              private paramService: ParamService) { }
 
     ngOnInit() {
       this.travelJson();
@@ -117,9 +122,10 @@ export class WalletPage implements OnInit {
       buttons: [{
         text: 'View Transactions',
         handler: () => {
+          this.paramService.setParam(this.bank[idx]);
           this.router.navigateByUrl('/details');
         }
-      },{
+      }, {
         text: 'View Card Number',
         handler: () => {
           this.displayCardNumber(idx);
@@ -127,12 +133,10 @@ export class WalletPage implements OnInit {
       },{
         text: 'View CVV',
         handler: () => {
+          this.displayCvvNumber(idx);
         }
-      },{
-        text: 'Send Money',
-        handler: () => {
-        }
-      },{
+        },
+        {
         text: 'Remove',
         cssClass: 'remove',
         handler: () => {
@@ -153,7 +157,7 @@ export class WalletPage implements OnInit {
       buttons: [{
         text: 'View Card Number',
         handler: () => {
-          console.log('Share clicked');
+          this.viewCardNumberShop(idx);
         }
       },{
         text: 'Remove',
@@ -265,13 +269,14 @@ export class WalletPage implements OnInit {
   transaction(idx) {
   }
 
-// View Card Number
+// View Card Number - Bank
 async displayCardNumber(idx) {
   const alert = await this.alertController.create({
     cssClass: 'alert_popup',
     header: 'Validate',
     message: 'Enter PIN to view card number.',
     inputs: [{
+      name: 'pin',
       type: 'text',
       placeholder: 'Enter Pin'
     }
@@ -285,8 +290,17 @@ async displayCardNumber(idx) {
       }, {
         text: 'Validate',
         cssClass: 'secondary',
-        handler: () => {
-          this.viewCardNumber(idx);
+        handler: (alertData) => {
+          if (alertData.pin === '000') {
+            this.viewCardNumber(idx);
+          }
+          else if (alertData.pin === '') {
+            this.emptyToast(idx);
+          }
+          else {
+            this.errorToast(idx);
+          }
+
         }
       }
     ]
@@ -294,13 +308,133 @@ async displayCardNumber(idx) {
   await alert.present();
 }
 
-  async viewCardNumber(idx) {
-    const alert = await this.alertController.create({
-      cssClass: 'alert_popup',
-      subHeader: 'Your ' + this.bank[idx].title + ' card number.' ,
-      message: this.bank[idx].content,
-    });
-    await alert.present();
-  }
+
+//View CVV Function
+async displayCvvNumber(idx) {
+  const alert = await this.alertController.create({
+    cssClass: 'alert_popup',
+    header: 'Validate',
+    message: 'Enter PIN to view card number.',
+    inputs: [{
+      name: 'pin',
+      type: 'text',
+      placeholder: 'Enter Pin'
+    }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        cssClass: 'secondary',
+        handler: () => {
+        }
+      }, {
+        text: 'Validate',
+        cssClass: 'secondary',
+        handler: (alertData) => {
+          if (alertData.pin === '000') {
+            this.viewCvvNumber(idx);
+          }
+          else if (alertData.pin === '') {
+            this.emptyToast(idx);
+          }
+          else {
+            this.errorToast(idx);
+          }
+
+        }
+      }
+    ]
+  });
+  await alert.present();
+}
+
+//Banking Functions
+
+//Card Number Display Function
+async viewCardNumber(idx) {
+  const alert = await this.alertController.create({
+    cssClass: 'alert_popup',
+    subHeader: 'Your ' + this.bank[idx].title + ' Card Number.',
+    message: this.bank[idx].content,
+  });
+  await alert.present();
+  setTimeout(() => {
+    alert.dismiss();
+  }, 10000);
+}
+
+//Card Number Display Function - Bank
+async viewCvvNumber(idx) {
+  const alert = await this.alertController.create({
+    cssClass: 'alert_popup',
+    subHeader: 'Your ' + this.bank[idx].title + ' CVV Number.' ,
+    message: this.bank[idx].cvv,
+  });
+  await alert.present();
+  setTimeout(() => {
+    alert.dismiss();
+  }, 10000);
+}
+
+// Error Toast
+async errorToast(idx) {
+  const toast = await this.toastController.create({
+    cssClass: 'toast',
+    message: 'Oops there is an error. Enter your pin again.',
+    duration: 2000,
+  });
+  toast.present();
+  this.displayCvvNumber(idx);
+
+}
+
+//Empty Input Toast
+async emptyToast(idx) {
+  const toast = await this.toastController.create({
+    cssClass: 'toast',
+    message: 'Please enter your pin.',
+    duration: 2000
+  });
+  toast.present();
+  this.displayCvvNumber(idx);
+}
+
+//Shopping Functions
+
+//Card Number Display Function
+async viewCardNumberShop(idx) {
+  const alert = await this.alertController.create({
+    cssClass: 'alert_popup',
+    subHeader: 'Your ' + this.shop[idx].title + ' Card Number.',
+    message: this.shop[idx].content,
+  });
+  await alert.present();
+  setTimeout(() => {
+    alert.dismiss();
+  }, 10000);
+}
+
+// // Error Toast
+// async shopErrorToast(idx) {
+//   const toast = await this.toastController.create({
+//     cssClass: 'toast',
+//     message: 'Oops there is an error. Enter your pin again.',
+//     duration: 2000,
+//   });
+//   toast.present();
+//   this.displayCvvNumber(idx);
+
+// }
+
+// //Empty Input Toast
+// async shopEmptyToast(idx) {
+//   const toast = await this.toastController.create({
+//     cssClass: 'toast',
+//     message: 'Please enter your pin.',
+//     duration: 2000
+//   });
+//   toast.present();
+//   this.displayCvvNumber(idx);
+// }
 
 }

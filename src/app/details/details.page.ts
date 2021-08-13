@@ -1,5 +1,10 @@
+import { Data } from './../../../www/assets/data/card';
 import { Component, OnInit } from '@angular/core';
-import { Router, Routes } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+
+import { ParamService } from './../param.service';
+
+
 
 let transaction: any;
 let deposit: any;
@@ -8,14 +13,23 @@ let myCard: any;
 let myAnalytics: any;
 
 
+
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
+  data: any;
+  bank: any;
 
-  constructor(private router: Router) { }
+
+  constructor(private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private paramService: ParamService) {
+    this.data = this.paramService.getParam();
+   }
 
   ngOnInit() {
     this.showCard();
@@ -71,4 +85,5 @@ export class DetailsPage implements OnInit {
     this.inactive(transaction);
     this.inactive(deposit);
   }
+
 }

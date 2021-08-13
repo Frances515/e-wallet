@@ -28,12 +28,12 @@
      <div id="my_card_section" class="main_content">
 
         <div id="card_background">
-          <div id="card">
+         <div id="card">
             <ion-grid>
               <ion-row>
                 <ion-col size="10">
                   <div class="card_title">
-                    Bank of Ghana
+                    {{data.title}}
                   </div>
                 </ion-col>
               </ion-row>
@@ -41,7 +41,7 @@
               <ion-row>
                 <ion-col>
                   <div class="card_content">
-                    **** **** **** 6632
+                    {{data.masked}}
                   </div>
                 </ion-col>
               </ion-row>
@@ -54,27 +54,21 @@
                         <ion-col size="4">
                           <div class="footer_title">
                             Card Holder
-                            <p>Araba Takyi</p>
+                            <p>{{data.firstname}} {{data.lastname}}</p>
                           </div>
                         </ion-col>
 
                         <ion-col size="4">
                           <div class="footer_title">
                             Expiry Date
-                            <p>12/23</p>
+                            <p>{{data.expiry}}</p>
                           </div>
                         </ion-col>
 
-                        <ion-col size="2">
+                        <ion-col size="4">
                           <div class="footer_title">
                             CVV
-                            <p>***</p>
-                          </div>
-                        </ion-col>
-
-                        <ion-col>
-                          <div class="visa">
-                            <img src="../../assets/icon/Icon payment-visa@2x.png">
+                            <p>{{data.cvvMasked}}</p>
                           </div>
                         </ion-col>
 
@@ -85,6 +79,16 @@
               </ion-row>
             </ion-grid>
           </div>
+
+          <!-- <div id="card">
+            <div>
+              <div>
+
+
+              </div>
+            </div>
+          </div> -->
+
         </div>
 
          <div id="card_filter">
@@ -522,7 +526,7 @@
         </div>
 
       </div>
- 
+
 
 
 
