@@ -86,22 +86,25 @@ export class WalletPage implements OnInit {
       header: this.travel[idx].title,
       cssClass: 'action-sheet-cards',
       buttons: [{
-        text: 'View Card Number',
-        handler: () => {
-          console.log('Share clicked');
-        }
-      }, {
+      //   text: 'View Card Number',
+      //   handler: () => {
+      //     console.log('Share clicked');
+      //   }
+      // },
+      // {
         text: 'View History',
         handler: () => {
           this.paramService.setParam(this.travel[idx]);
           this.router.navigateByUrl('/travel-details');
         }
-      }, {
-        text: 'View Miles',
-        handler: () => {
-          console.log('Play clicked');
-        }
-      },{
+      },
+        // {
+        // text: 'View Miles',
+        // handler: () => {
+        //   console.log('Play clicked');
+        // }
+        // },
+        {
         text: 'Remove',
         cssClass: 'remove',
         handler: () => {
