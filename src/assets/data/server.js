@@ -1,18 +1,18 @@
 /* eslint-env es6 */
 /* eslint-disable no-console */
 
-const express = require('express')
-const app = express()
+// const express = require('express')
+// const app = express()
 
-const PORT = 8100
+// const PORT = 8100
 
-app.listen(PORT, () => console.log(`listening at  https://localhost:${PORT}`))
-app.use(express.static('public'))
+// app.listen(PORT, () => console.log(`listening at  https://localhost:${PORT}`))
+// app.use(express.static('public'))
 
 "use strict";
-class AddCard{
+// class AddCard{
 
-  hello(bankCards) {
+  function hello() {
     const card = {
       id: "NF1",
       title: "NF1 Bank",
@@ -27,7 +27,7 @@ class AddCard{
       cvv: 341,
       category: "banking",
       status: true
-  }
+    }
 
   const fs = require('fs')
 
@@ -47,8 +47,9 @@ class AddCard{
     fs.writeFileSync('src/assets/data/addCard.json', jsonData, finished)
   }
 
-  saveData(bankCards)
+    saveData(bankCards)
+    alert(bankCards)
 
-}
-
-}
+ }
+//  hello();
+// }
